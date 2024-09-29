@@ -1,0 +1,135 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+}
+
+/* 中心容器樣式 */
+.game-container {
+    text-align: center;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* 控制面板樣式 */
+#controls {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+button,
+select {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: #3498db;
+    color: #ffffff;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button:hover,
+select:hover {
+    background-color: #2980b9;
+    transform: scale(1.05);
+}
+
+#timer {
+    font-size: 20px;
+    margin-top: 10px;
+    color: #e74c3c;
+}
+
+/* 遊戲板樣式 */
+#gameBoard {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    max-width: 450px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* 卡片樣式 */
+.card {
+    width: 100px;
+    height: 100px;
+    perspective: 1000px;
+    cursor: pointer;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s ease;
+}
+
+/* 卡片正反面樣式 */
+.card .front,
+.card .back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    backface-visibility: hidden;
+    transition: transform 0.6s ease, box-shadow 0.3s ease;
+}
+
+/* 卡片正面樣式 */
+.card .front {
+    background: linear-gradient(135deg, #74ebd5, #acb6e5);
+    transform: rotateY(180deg);
+    overflow: hidden;
+}
+
+/* 卡片背面樣式 */
+.card .back {
+    background: linear-gradient(135deg, #6dd5ed, #2193b0);
+}
+
+/* 卡片翻轉樣式 */
+.card.flipped {
+    transform: rotateY(180deg);
+}
+
+/* 卡片圖片樣式 */
+.card img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 5px;
+    z-index: 1;
+}
+
+/* 配對成功的卡片樣式 */
+.card.matched {
+    border: 2px solid #2ecc71;
+    box-shadow: 0 0 12px rgba(46, 204, 113, 0.7);
+}
+
+/* 遊戲板禁用狀態 */
+.disabled {
+    pointer-events: none;
+}
+
+/* 手機端樣式調整 */
+@media (max-width: 600px) {
+    #gameBoard {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .card {
+        width: 80px;
+        height: 80px;
+    }
+}
